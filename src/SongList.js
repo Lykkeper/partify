@@ -4,26 +4,27 @@ import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 
 class SongList extends React.Component {
+  constructor() {
+    super();
+
+    this.renderSong = this.renderSong.bind(this);
+  }
+
+  renderSong(song) {
+    return(
+      <ListItem
+        key={song.id.videoId}
+        primaryText={song.snippet.title}
+        leftAvatar={<Avatar src={song.snippet.thumbnails.default.url} />}
+      />
+    )
+  }
+
   render() {
     return(
       <List>
         <Subheader>Songs</Subheader>
-        <ListItem
-          primaryText="Awesome Song"
-          leftAvatar={<Avatar src="http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg" />}
-        />
-        <ListItem
-          primaryText="Awesome Song"
-          leftAvatar={<Avatar src="http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg" />}
-        />
-        <ListItem
-          primaryText="Awesome Song"
-          leftAvatar={<Avatar src="http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg" />}
-        />
-        <ListItem
-          primaryText="Awesome Song"
-          leftAvatar={<Avatar src="http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg" />}
-        />
+        {this.props.songs.map(this.renderSong)}
       </List>
     )
   }
