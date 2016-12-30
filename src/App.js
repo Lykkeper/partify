@@ -6,13 +6,27 @@ import AddSong from './AddSong';
 import VideoPlayer from './VideoPlayer';
 
 class App extends Component {
+  renderVideo() {
+    const isMobileView = window.outerWidth < 769;
+    if(!isMobileView){
+      return <VideoPlayer />;
+    }
+  }
+
   render() {
     return (
       <MuiThemeProvider>
-        <div>
-          <AddSong />
-          <TrackList />
-          <VideoPlayer />
+        <div style={{
+            display:"flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            height: "100%"
+          }}>
+          <div style={{width:"100%", maxWidth:400}}>
+            <AddSong />
+            <TrackList />
+          </div>
+          {this.renderVideo()}
         </div>
       </MuiThemeProvider>
     );
