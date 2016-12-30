@@ -9,7 +9,8 @@ class App extends Component {
   constructor() {
     super();
     this.addSong = this.addSong.bind(this);
-
+    this.handleSongEnd = this.handleSongEnd.bind(this);
+    this.renderVideo = this.renderVideo.bind(this);
     this.state = {
       songs: []
     };
@@ -21,10 +22,16 @@ class App extends Component {
     this.setState({songs});
   }
 
+  handleSongEnd() {
+    let songs = this.state.songs;
+    songs.shift()
+    this.setState({songs});
+  }
+
   renderVideo(song) {
     const isMobileView = window.outerWidth < 769;
     if(!isMobileView && song){
-      return <VideoPlayer videoId={song.id.videoId}/>;
+      return <VideoPlayer videoId={song.id.videoId} onEnd={this.handleSongEnd}/>;
     }
   }
 

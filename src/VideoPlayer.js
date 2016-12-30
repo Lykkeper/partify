@@ -16,6 +16,7 @@ class VideoPlayer extends React.Component {
         <Youtube
           videoId={this.props.videoId}
           opts={opts}
+          onEnd={this.props.onEnd}
         />
       </div>
     )
