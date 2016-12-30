@@ -1,41 +1,28 @@
 import React from 'react';
-import AutoComplete from 'material-ui/AutoComplete';
+import YoutubeAutocomplete from 'material-ui-youtube-autocomplete';
 
 class AddSong extends React.Component {
   constructor() {
     super();
-    this.handleUpdateInput = this.handleUpdateInput.bind(this);
-    this.state = {
-      dataSource: []
-    }
-  }
-
-  handleUpdateInput(value) {
-    this.setState({
-      dataSource: [
-        value,
-        value + value,
-        value + value + value,
-      ],
-    });
+    this._onSearchResultsFound = this._onSearchResultsFound.bind(this);
   }
 
   render() {
     return (
-      <div>
-        <AutoComplete
-          hintText="Try searching by artist or title!"
-          dataSource={this.state.dataSource}
-          onUpdateInput={this.handleUpdateInput}
-          floatingLabelText="Add a song"
-          fullWidth={true}
-          style={{
-            margin: "0 10px",
-            width: "90%"
-          }}
+      <div className="youtube-autocomplete">
+        <YoutubeAutocomplete
+          apiKey="AIzaSyBOq82r79yzV-JevcYnDjSyZL2wjLfrPlI"
+          placeHolder="Add a song"
+          maxResults="5"
+          callback={this._onSearchResultsFound}
         />
       </div>
     );
+  }
+
+  _onSearchResultsFound(results) {
+    const song = results[0];
+    this.props.addSong(song);
   }
 }
 
