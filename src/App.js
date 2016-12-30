@@ -31,7 +31,12 @@ class App extends Component {
   renderVideo(song) {
     const isMobileView = window.outerWidth < 769;
     if(!isMobileView && song){
-      return <VideoPlayer videoId={song.id.videoId} onEnd={this.handleSongEnd}/>;
+      return (
+        <VideoPlayer
+          videoId={song.id.videoId}
+          onEnd={this.handleSongEnd}
+        />
+      )
     }
   }
 
@@ -40,13 +45,8 @@ class App extends Component {
 
     return (
       <MuiThemeProvider>
-        <div style={{
-            display:"flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            height: "100%"
-          }}>
-          <div style={{width:"100%", maxWidth:400}}>
+        <div className="app">
+          <div className="app--song-selector">
             <AddSong addSong={this.addSong} />
             <SongList songs={this.state.songs} />
           </div>
