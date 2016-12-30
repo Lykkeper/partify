@@ -4,7 +4,6 @@ import YoutubeAutocomplete from 'material-ui-youtube-autocomplete';
 class AddSong extends React.Component {
   constructor() {
     super();
-
     this._onSearchResultsFound = this._onSearchResultsFound.bind(this);
   }
 
