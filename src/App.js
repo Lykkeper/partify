@@ -21,14 +21,16 @@ class App extends Component {
     this.setState({songs});
   }
 
-  renderVideo() {
+  renderVideo(song) {
     const isMobileView = window.outerWidth < 769;
-    if(!isMobileView){
-      return <VideoPlayer />;
+    if(!isMobileView && song){
+      return <VideoPlayer videoId={song.id.videoId}/>;
     }
   }
 
   render() {
+    const currentSong = this.state.songs[0]
+
     return (
       <MuiThemeProvider>
         <div style={{
@@ -41,7 +43,7 @@ class App extends Component {
             <AddSong addSong={this.addSong} />
             <SongList songs={this.state.songs} />
           </div>
-          {this.renderVideo()}
+          {this.renderVideo(currentSong)}
         </div>
       </MuiThemeProvider>
     );

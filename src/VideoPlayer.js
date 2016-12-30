@@ -6,15 +6,15 @@ class VideoPlayer extends React.Component {
     const opts = {
       height: "390",
       width: "640",
-      // playerVars: { // https://developers.google.com/youtube/player_parameters
-      //   autoplay: 1
-      // }
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+      }
     };
 
     return(
       <div>
         <Youtube
-          videoId="i3Jv9fNPjgk"
+          videoId={this.props.videoId}
           opts={opts}
         />
       </div>
