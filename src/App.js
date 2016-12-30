@@ -3,6 +3,7 @@ import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TrackList from './TrackList';
 import AddSong from './AddSong';
+import VideoPlayer from './VideoPlayer';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <div>
           <AddSong />
           <TrackList />
+          <VideoPlayer />
         </div>
       </MuiThemeProvider>
     );
