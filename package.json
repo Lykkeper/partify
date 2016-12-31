@@ -2,6 +2,7 @@
   "name": "partify",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://lykkeper.github.io/partify-prod/",
   "devDependencies": {
     "react-scripts": "0.8.4"
   },
