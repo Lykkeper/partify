@@ -1,11 +1,15 @@
-.video-player {
-  /*display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;*/
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
 .app--song-selector {
   width: 100%;
   max-width: 400px;
+  flex-grow: 1;
+}
+
+.video-player {
+  flex-grow: 3;
 }
