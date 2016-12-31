@@ -13,9 +13,8 @@ class SongList extends React.Component {
 
   renderSong(song) {
     return(
-      <div className="song">
+      <div key={song.id.videoId} className="song">
         <ListItem
-          key={song.id.videoId}
           primaryText={song.snippet.title}
           leftAvatar={<Avatar src={song.snippet.thumbnails.default.url} />}
         />
