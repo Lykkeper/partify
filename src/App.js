@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SongList from './SongList';
 import AddSong from './AddSong';
 import VideoPlayer from './VideoPlayer';
+import base from './base';
 
 class App extends Component {
   constructor() {
@@ -14,6 +15,18 @@ class App extends Component {
     this.state = {
       songs: []
     };
+  }
+
+  componentWillMount() {
+    this.ref = base.syncState('songs', {
+      context: this,
+      state: 'songs',
+      asArray: true
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
 
   addSong(song) {
@@ -32,10 +45,12 @@ class App extends Component {
     const isMobileView = window.outerWidth < 769;
     if(!isMobileView && song){
       return (
-        <VideoPlayer
-          videoId={song.id.videoId}
-          onEnd={this.handleSongEnd}
-        />
+        <div className="video-player">
+          <VideoPlayer
+            videoId={song.id.videoId}
+            onEnd={this.handleSongEnd}
+          />
+        </div>
       )
     }
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
 
 class SongList extends React.Component {
   constructor() {
@@ -12,11 +13,14 @@ class SongList extends React.Component {
 
   renderSong(song) {
     return(
-      <ListItem
-        key={song.id.videoId}
-        primaryText={song.snippet.title}
-        leftAvatar={<Avatar src={song.snippet.thumbnails.default.url} />}
-      />
+      <div className="song">
+        <ListItem
+          key={song.id.videoId}
+          primaryText={song.snippet.title}
+          leftAvatar={<Avatar src={song.snippet.thumbnails.default.url} />}
+        />
+        <Divider/>
+      </div>
     )
   }
 

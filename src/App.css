@@ -1,8 +1,8 @@
-.app {
-  display: flex;
+.video-player {
+  /*display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
+  height: 100%;*/
 }
 
 .app--song-selector {
